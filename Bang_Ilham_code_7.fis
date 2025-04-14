@@ -1,0 +1,73 @@
+[System]
+Name='Bang_Ilham_code_7'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=27
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='Suhu'
+Range=[0 40]
+NumMFs=3
+MF1='Dingin':'trapmf',[0 0 15 20]
+MF2='Normal':'trimf',[15 25 29]
+MF3='Panas':'trapmf',[29 32 40 40]
+
+[Input2]
+Name='TDS'
+Range=[0 1000]
+NumMFs=3
+MF1='Rendah':'trapmf',[0 0 200 300]
+MF2='Normal':'trimf',[300 500 840]
+MF3='Tinggi':'trapmf',[840 850 1000 1000]
+
+[Input3]
+Name='pH'
+Range=[0 14]
+NumMFs=3
+MF1='Rendah':'trapmf',[0 0 6 6.5]
+MF2='Normal':'trimf',[6 7 8]
+MF3='Tinggi':'trapmf',[8 9 14 14]
+
+[Output1]
+Name='output1'
+Range=[0 10]
+NumMFs=3
+MF1='Tidak_Baik':'constant',[3]
+MF2='Sedang':'constant',[7]
+MF3='Baik':'constant',[10]
+
+[Rules]
+1 1 1, 1 (1) : 1
+1 1 2, 1 (1) : 1
+1 1 3, 1 (1) : 1
+1 2 1, 1 (1) : 1
+1 2 2, 2 (1) : 1
+1 2 3, 2 (1) : 1
+1 3 1, 1 (1) : 1
+1 3 2, 2 (1) : 1
+1 3 3, 1 (1) : 1
+2 1 1, 1 (1) : 1
+2 1 2, 1 (1) : 1
+2 1 3, 2 (1) : 1
+2 2 1, 2 (1) : 1
+2 2 2, 3 (1) : 1
+2 2 3, 2 (1) : 1
+2 3 1, 2 (1) : 1
+3 1 2, 1 (1) : 1
+2 3 3, 2 (1) : 1
+3 1 1, 1 (1) : 1
+3 1 2, 2 (1) : 1
+3 1 3, 2 (1) : 1
+3 2 1, 2 (1) : 1
+3 2 2, 2 (1) : 1
+3 2 3, 2 (1) : 1
+3 3 1, 2 (1) : 1
+3 3 2, 2 (1) : 1
+3 3 3, 2 (1) : 1

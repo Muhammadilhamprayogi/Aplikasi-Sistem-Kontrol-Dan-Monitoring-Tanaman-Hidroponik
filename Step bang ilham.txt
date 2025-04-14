@@ -1,0 +1,48 @@
+Step 1 Donwload
+1. Donwload Arduino IDE, Pyton, emqx  broker, Xampp, Vscode
+2. Donwload Library Pyton: Paho MQTT Library, Flask, mysql-connector-python
+3. Install Board ES32 dan Arduino
+4. Install Library Arduino IDE: PubSubClient, LiquidCrystal_I2C.h,DallasTemperature.h, BH1750.h
+
+Step 2
+Hubungkan satu wifi yang akan di pakai setiap saat, lalu buat ip statisnya menjadi 192.168.26.153
+
+Step 3 
+Hubungkan Ke MySQL, pastikan apache dan MySQL bisa aktif dengan normal
+lalu buat tabel baru di MySQL dengan code sql di bawah ini:
+
+//code sql
+CREATE DATABASE data_hidroponik;
+USE data_hidroponik;
+CREATE TABLE values_hidroponik (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    lux_value FLOAT,
+    tds_value FLOAT,
+    suhu_value FLOAT,
+    ph_value FLOAT,
+    fuzzy_value FLOAT
+);
+
+Step 4
+aktifkan emqx broker melalui terminal
+
+Step 5 
+buat sebuah perintah agar website bisa di jalankan satu kali menggunakan notepad
+
+contoh:
+
+@echo off
+
+:: Menjalankan EMQX
+start "" "D:\Aplikasi\emqx\bin\emqx.cmd" start
+
+:: Menjalankan script Python untuk MySQL
+start "" python "D:\PROJEK\bang ilham\Bang_Ilham_Pyton\mqtt_to_mysql.py"
+
+:: Menjalankan script Python untuk website
+start "" python "D:\PROJEK\bang ilham\bang_ilham_website\app.py"
+
+pause
+
+
+//sesuikan dengan lokasi penyimpanan
